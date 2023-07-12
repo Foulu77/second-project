@@ -54,13 +54,14 @@ function Steps() {
           </button>
         </div>
         <div className="group-3">
-          {count === 0 && <p className="item">{`Today is ${formattedDAte}`}</p>}
-          {count > 0 && (
-            <p className="item">{`${count} days from today is ${formattedDAte}`}</p>
-          )}
-          {count < 0 && (
-            <p className="item">{`${count} days ago was ${formattedDAte}`}</p>
-          )}
+          <p className="item">
+            {count === 0
+              ? "Today is "
+              : count > 0
+              ? `${count} days from today is `
+              : `${count} ${Math.abs(count)} days ago was `}
+          </p>
+          <p className="item">{formattedDAte}</p>
         </div>
       </div>
     </>

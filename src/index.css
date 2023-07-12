@@ -26,7 +26,6 @@ code {
   align-items: center;
 }
 .item {
-  background-color: #eaeaea;
   padding: 10px;
   margin: 5px;
 }
@@ -49,4 +48,14 @@ code {
 .group-2 .item:nth-child(3) {
   background-color: #000000;
   color: white;
+}
+
+.group-3 .item:nth-child(1) {
+  margin: auto;
+  padding: 2px;
+}
+
+.group-3 .item:nth-child(2) {
+  margin: auto;
+  padding: 2px;
 }
