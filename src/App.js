@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function App() {
   return (
@@ -11,10 +11,14 @@ export default function App() {
 function Steps() {
   const [step, setStep] = useState(1);
   const [count, setCount] = useState(0);
-  const myDate = new Date();
-  const formattedDAte = new Date(
-    myDate.setDate(myDate.getDate() + count)
-  ).toDateString();
+  const [formattedDAte, setformattedDAte] = useState(null);
+
+  useEffect(() => {
+    const myDate = new Date();
+    setformattedDAte(
+      new Date(myDate.setDate(myDate.getDate() + count)).toDateString()
+    );
+  }, [count]);
 
   function deductSteps() {
     if (step > 1) setStep((stepper) => stepper - 1);
