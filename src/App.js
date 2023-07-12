@@ -59,7 +59,7 @@ function Steps() {
               ? "Today is "
               : count > 0
               ? `${count} days from today is `
-              : `${count} ${Math.abs(count)} days ago was `}
+              : `${Math.abs(count)} days ago was `}
           </p>
           <p className="item">{formattedDAte}</p>
         </div>
