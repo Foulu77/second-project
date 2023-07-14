@@ -1,71 +1,82 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function App() {
   return (
     <div>
-      <Steps />
+      <Counter />
     </div>
   );
 }
 
-function Steps() {
-  const [step, setStep] = useState(1);
+function Counter() {
   const [count, setCount] = useState(0);
-  const [formattedDAte, setformattedDAte] = useState(null);
+  const [step, setStep] = useState(1);
+  const myDate = new Date();
+  myDate.setDate(myDate.getDate() + count);
 
-  useEffect(() => {
-    const myDate = new Date();
-    setformattedDAte(
-      new Date(myDate.setDate(myDate.getDate() + count)).toDateString()
-    );
-  }, [count]);
-
-  function deductSteps() {
-    if (step > 1) setStep((stepper) => stepper - 1);
-  }
-
-  function sumSteps() {
-    setStep((stepper) => stepper + 1);
-  }
+  const stepChanger = (event) => {
+    setStep(Number(event.target.value));
+  };
 
   function countMinus() {
-    setCount((counter) => counter - 1 * step);
+    setCount((counter) => counter - step);
   }
 
   function countPlus() {
-    setCount((counter) => counter + 1 * step);
+    setCount((counter) => counter + step);
+  }
+
+  const countChanger = (event) => {
+    setCount(Number(event.target.value));
+  };
+
+  function handleReset() {
+    setStep(1);
+    setCount(0);
   }
 
   return (
     <>
       <div className="container">
-        <div className="group-1">
-          <button className="item" onClick={deductSteps}>
-            -
-          </button>
-          <p className="item">Steps: {step}</p>
-          <button className="item" onClick={sumSteps}>
-            +
-          </button>
+        <div className="sliderContainer">
+          <input
+            className="slider"
+            type="range"
+            min="1"
+            max="10"
+            value={step}
+            onChange={stepChanger}
+          />
+          <p>Step: {step}</p>
         </div>
         <div className="group-2">
-          <button className="item" onClick={countMinus}>
+          <button className="item1" onClick={countMinus}>
             -
           </button>
-          <p className="item">count: {count}</p>
-          <button className="item" onClick={countPlus}>
+          <input
+            type="text"
+            className="boxCount"
+            value={count}
+            onChange={countChanger}
+          />
+          <button className="item2" onClick={countPlus}>
             +
           </button>
         </div>
         <div className="group-3">
           <p className="item">
-            {count === 0
-              ? "Today is "
-              : count > 0
+            {count > 0
               ? `${count} days from today is `
-              : `${Math.abs(count)} days ago was `}
+              : count < 0
+              ? `${Math.abs(count)} days ago was `
+              : "Today is "}
           </p>
-          <p className="item">{formattedDAte}</p>
+          <p className="item">{myDate.toDateString()}</p>
+          {count !== 0 || step !== 1 ? (
+            <button className="item" onClick={handleReset}>
+              Reset
+            </button>
+          ) : null}
         </div>
       </div>
     </>

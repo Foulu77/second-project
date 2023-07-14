@@ -25,37 +25,50 @@ code {
   justify-content: center;
   align-items: center;
 }
-.item {
+
+.sliderContainer {
+  display: flex;
+  align-items: center;
+}
+
+.boxCount {
+  color: black;
+  width: 50%;
+  font-weight: bold;
+  font-size: medium;
+  text-align: center;
+}
+
+.group-2 .item1 {
+  background-color: #000000;
+  color: white;
   padding: 10px;
   margin: 5px;
 }
 
-.group-1 .item:nth-child(1) {
+.group-2 .item2 {
   background-color: #000000;
   color: white;
+  padding: 10px;
+  margin: 5px;
 }
 
-.group-1 .item:nth-child(3) {
-  background-color: #000000;
-  color: white;
-}
-
-.group-2 .item:nth-child(1) {
-  background-color: #000000;
-  color: white;
-}
-
-.group-2 .item:nth-child(3) {
-  background-color: #000000;
-  color: white;
+.group-3 {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  gap: 3px;
 }
 
 .group-3 .item:nth-child(1) {
-  margin: auto;
-  padding: 2px;
+  grid-column: 1 / span 1;
 }
 
 .group-3 .item:nth-child(2) {
-  margin: auto;
+  grid-column: 2 / span 1;
+}
+
+.group-3 .item:nth-child(3) {
   padding: 2px;
+  grid-column: 1 / span 2;
 }
